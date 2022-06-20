@@ -1,8 +1,11 @@
-FROM python:3.8
+FROM gcr.io/deeplearning-platform-release/base-cpu
 
 WORKDIR /llm
 
-RUN git clone --branch=main https://github.com/google-research/t5x
-RUN pip install --upgrade pip
+RUN conda update -n base conda
+RUN conda create -n t5x python=3.9
 
-RUN python -m pip install -e 't5x[tpu]' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
+RUN git clone --branch=main https://github.com/google-research/t5x
+RUN /opt/conda/envs/t5x/bin/pip install --upgrade pip
+
+RUN /opt/conda/envs/t5x/bin/python -m pip install -e 't5x[tpu]' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
