@@ -1,8 +1,8 @@
 FROM gcr.io/deeplearning-platform-release/base-cpu
 
 WORKDIR /llm
+ADD *.gin ./
 
-RUN conda update -n base conda
 RUN conda create -n t5x python=3.9
 
 RUN git clone --branch=main https://github.com/google-research/t5x
