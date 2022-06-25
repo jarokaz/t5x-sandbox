@@ -2,7 +2,6 @@ FROM gcr.io/deeplearning-platform-release/base-cpu
 
 WORKDIR /llm
 
-RUN conda update -n base conda
 RUN conda create -n t5x python=3.9
 
 RUN git clone --branch=main https://github.com/google-research/t5x
@@ -12,3 +11,5 @@ RUN /opt/conda/envs/t5x/bin/pip install -e 't5x[tpu]' -f https://storage.googlea
 
 RUN /opt/conda/envs/t5x/bin/pip uninstall seqio seqio-nightly -y
 RUN /opt/conda/envs/t5x/bin/pip install seqio-nightly
+
+ADD *.gin ./
