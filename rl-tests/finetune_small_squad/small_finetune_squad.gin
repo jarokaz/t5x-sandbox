@@ -1,0 +1,17 @@
+from __gin__ import dynamic_registration
+
+import __main__ as train_script
+from t5.data import mixtures
+from t5x import models
+from t5x import partitioning
+from t5x import utils
+
+include "small.gin"
+include "t5x/t5x/configs/runs/finetune.gin"
+
+MIXTURE_OR_TASK_NAME = "squad_v010_allanswers"
+TASK_FEATURE_LENGTHS = {"inputs": 256, "targets": 256}
+TRAIN_STEPS = 1_020_000  # 1000000 pre-trained steps + 20000 fine-tuning steps.
+DROPOUT_RATE = 0.0
+INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_small/checkpoint_1000000"
+LOSS_NORMALIZING_FACTOR = 233472
