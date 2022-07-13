@@ -21,3 +21,10 @@ gcloud alpha compute tpus tpu-vm create jk-v2-32 \
   --scopes=https://www.googleapis.com/auth/cloud-platform
 ```
 
+## Installing JAX
+```
+gcloud compute tpus tpu-vm ssh jk-v2-32 \
+  --zone us-central1-a \
+  --worker=all \
+  --command="pip install 'jax[tpu]>=0.2.16' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html"
+```
