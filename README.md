@@ -11,6 +11,12 @@ gcloud alpha compute tpus tpu-vm create jk-v3-8 \
   --scopes=https://www.googleapis.com/auth/cloud-platform
 ```
 
+```
+gcloud compute tpus tpu-vm ssh jk-v3-8 \
+  --zone us-central1-a \
+  --command="pip install ipython 'jax[tpu]>=0.2.16' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html"
+```
+
 ## Provisioning TPU VM slice
 
 ```
