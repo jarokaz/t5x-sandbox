@@ -12,7 +12,7 @@ gcloud alpha compute tpus tpu-vm create jk-v3-8 \
 ```
 
 ```
-gcloud compute tpus tpu-vm ssh jk-v3-8 \
+gcloud alpha compute tpus tpu-vm ssh jk-v3-8 \
   --zone us-central1-a \
   --command="pip install ipython 'jax[tpu]>=0.2.16' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html"
 ```
@@ -29,7 +29,7 @@ gcloud alpha compute tpus tpu-vm create jk-v2-32 \
 
 ## Installing JAX
 ```
-gcloud compute tpus tpu-vm ssh jk-v2-32 \
+gcloud alpha compute tpus tpu-vm ssh jk-v2-32 \
   --zone us-central1-a \
   --worker=all \
   --command="pip install ipython 'jax[tpu]>=0.2.16' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html"
