@@ -6,7 +6,7 @@
 ```
 
 PROJECT_ID=jk-mlops-dev
-IMAGE_NAME="gcr.io/$PROJECT_ID/t5x"
+IMAGE_NAME="gcr.io/$PROJECT_ID/t5x_base"
 
 docker build -t $IMAGE_NAME .
 docker push $IMAGE_NAME
