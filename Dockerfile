@@ -1,15 +1,30 @@
-FROM gcr.io/deeplearning-platform-release/base-cpu
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-WORKDIR /llm
+FROM python:3.9 
 
-RUN conda create -n t5x python=3.9
-
+WORKDIR /
 RUN git clone --branch=main https://github.com/google-research/t5x
-RUN /opt/conda/envs/t5x/bin/pip install --upgrade pip
+WORKDIR t5x
 
-RUN /opt/conda/envs/t5x/bin/pip install -e 't5x[tpu]' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
+RUN pip install -e '.[tpu]' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
+RUN pip uninstall seqio seqio-nightly -y
+RUN pip install seqio-nightly
 
-RUN /opt/conda/envs/t5x/bin/pip uninstall seqio seqio-nightly -y
-RUN /opt/conda/envs/t5x/bin/pip install seqio-nightly
+RUN apt-get install apt-transport-https ca-certificates gnupg
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-cli -y
 
-ADD test.py ./
+RUN pip install -U rouge_score
+
+ENTRYPOINT ["python", "./t5x/main.py"]

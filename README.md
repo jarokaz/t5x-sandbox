@@ -1,36 +1,9 @@
-# T5X Sandbox
+# T5X on Vertex AI
 
+This repository compiles prescriptive guidance and code samples demonstrating how to operationalize open source large language models with T5X on Vertex AI.
 
-## Provisioning TPU VM device
-
-```
-gcloud alpha compute tpus tpu-vm create jk-v3-8 \
-  --zone=us-central1-a \
-  --accelerator-type=v3-8 \
-  --version=tpu-vm-base \
-  --scopes=https://www.googleapis.com/auth/cloud-platform
-```
-
-```
-gcloud alpha compute tpus tpu-vm ssh jk-v3-8 \
-  --zone us-central1-a \
-  --command="pip install ipython 'jax[tpu]>=0.2.16' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html"
-```
-
-## Provisioning TPU VM slice
-
-```
-gcloud alpha compute tpus tpu-vm create jk-v2-32 \
-  --zone=us-central1-a \
-  --accelerator-type=v2-32 \
-  --version=tpu-vm-base \
-  --scopes=https://www.googleapis.com/auth/cloud-platform
-```
-
-## Installing JAX
-```
-gcloud alpha compute tpus tpu-vm ssh jk-v2-32 \
-  --zone us-central1-a \
-  --worker=all \
-  --command="pip install ipython 'jax[tpu]>=0.2.16' -f https://storage.googleapis.com/jax-releases/libtpu_releases.html"
-```
+The content in this repository centers around these scenarios:
+ - Data preprocessing with SeqIO and Apache Beam 
+ - Pre training and fine tuning models developed with open source T5X framework on Vertex AI. 
+ - Online and batch serving large language models developed with T5X on Vertex AI. 
+ - Automating training and deployment process for large language models using Vertex AI Pipelines.
