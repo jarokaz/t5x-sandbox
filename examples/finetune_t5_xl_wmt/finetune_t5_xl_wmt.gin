@@ -16,5 +16,5 @@ DROPOUT_RATE = 0.0
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_xl/checkpoint_1000000"
 LOSS_NORMALIZING_FACTOR = 233472
 
-partitioning.PjitPartitioner:
-  num_partitions = 2
+BATCH_SIZE = 64
+partitioning.PjitPartitioner.num_partitions = 8
