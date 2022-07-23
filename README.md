@@ -1,9 +1,50 @@
 # T5X on Vertex AI
 
-This repository compiles prescriptive guidance and code samples demonstrating how to operationalize open source large language models with T5X on Vertex AI.
+This repository compiles prescriptive guidance and code samples demonstrating how to operationalize Google Research T5X framework on Vertex AI.
 
-The content in this repository centers around these scenarios:
- - Data preprocessing with SeqIO and Apache Beam 
- - Pre training and fine tuning models developed with open source T5X framework on Vertex AI. 
- - Online and batch serving large language models developed with T5X on Vertex AI. 
- - Automating training and deployment process for large language models using Vertex AI Pipelines.
+## Runing T5X workloads on Vertex AI
+
+### Building Vertex AI custom training container
+
+
+From the repo's root folder run the following command:
+
+```
+PROJECT_ID=jk-mlops-dev
+IMAGE_NAME=gcr.io/$PROJECT_ID/t5x_base
+docker build -t $IMAGE_NAME .
+docker push $IMAGE_NAME
+```
+
+### Configuring T5X jobs
+
+#### Defining Vertex AI Training CustomJob
+
+#### Configuring T5X job 
+
+#### Defining data and model parallelism
+
+### Using Vertex AI Experiments to track and analyze T5X jobs
+
+#### Creating Vertex AI Tensorboard instance
+
+```
+PROJECT_ID=jk-mlops-dev
+REGION=us-central1-a
+TENSORBOARD_INSTANCE_NAME=t5x-experiments
+
+gcloud ai tensorboards create \
+--display-name=$TENSORBOARD_INSTANCE_NAME \
+--region=REGION \
+--project=PROJECT_ID
+```
+
+## Repository structure
+
+## Contributing
+
+## Getting help
+
+## Disclaimer
+
+## Feedback
