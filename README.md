@@ -34,7 +34,7 @@ docker push $IMAGE_NAME
 
 ```
 PROJECT_ID=jk-mlops-dev
-REGION=us-central1-a
+REGION=us-central1
 TENSORBOARD_INSTANCE_NAME=t5x-experiments
 
 gcloud ai tensorboards create \
