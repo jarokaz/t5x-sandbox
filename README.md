@@ -20,7 +20,7 @@ docker push $IMAGE_NAME
 
 #### Defining Vertex AI Training CustomJob
 
-#### Configuring T5X job 
+#### Configuring T5X jobs using Gin
 
 #### Defining data and model parallelism
 
