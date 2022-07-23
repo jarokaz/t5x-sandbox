@@ -2,10 +2,20 @@
 
 This repository compiles prescriptive guidance and code samples demonstrating how to operationalize Google Research T5X framework on Vertex AI.
 
-## Runing T5X workloads on Vertex AI
+
+## T5X Overview
+
+### Configuring T5X jobs using Gin
+
+### Configuring T5X tasks and mixtures with SeqIO
+
+#### Developing custom SeqIO tasks
+
+### Defining data and model partitioning
+
+## Running Vertex AI T5X jobs
 
 ### Building Vertex AI custom training container
-
 
 From the repo's root folder run the following command:
 
@@ -16,13 +26,7 @@ docker build -t $IMAGE_NAME .
 docker push $IMAGE_NAME
 ```
 
-### Configuring T5X jobs
-
-#### Defining Vertex AI Training CustomJob
-
-#### Configuring T5X jobs using Gin
-
-#### Defining data and model parallelism
+### Defining Vertex AI Training T5X jobs
 
 ### Using Vertex AI Experiments to track and analyze T5X jobs
 
@@ -35,8 +39,8 @@ TENSORBOARD_INSTANCE_NAME=t5x-experiments
 
 gcloud ai tensorboards create \
 --display-name=$TENSORBOARD_INSTANCE_NAME \
---region=REGION \
---project=PROJECT_ID
+--region=$REGION \
+--project=$PROJECT_ID
 ```
 
 ## Repository structure
